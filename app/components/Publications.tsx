@@ -1,0 +1,61 @@
+import { publication } from '@/lib/data'
+
+export default function Publications() {
+  return (
+    <section id="publications" className="py-24">
+      <div className="max-w-6xl mx-auto px-6">
+
+        {/* Section header */}
+        <div className="mb-12">
+          <p className="text-sm font-medium text-accent mb-2 tracking-wide">
+            Published work
+          </p>
+          <h2 className="text-3xl font-bold text-foreground">Research</h2>
+        </div>
+
+        <div className="max-w-3xl p-8 rounded-xl border border-border hover:border-zinc-300 hover:shadow-sm transition-all duration-150">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="px-2.5 py-0.5 text-xs font-medium text-accent bg-accent/10 rounded-full">
+              {publication.venue}
+            </span>
+            <span className="text-sm text-muted-foreground">{publication.year}</span>
+          </div>
+
+          <h3 className="text-xl font-semibold text-foreground leading-snug mb-3">
+            {publication.title}
+          </h3>
+
+          <p className="text-sm text-zinc-600 leading-relaxed mb-6">
+            {publication.summary}
+          </p>
+
+          <a
+            href={`https://doi.org/${publication.doi}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:text-accent-hover transition-colors duration-150"
+          >
+            View Publication
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
+  )
+}
