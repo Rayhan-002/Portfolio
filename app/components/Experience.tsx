@@ -52,27 +52,56 @@ export default function Experience() {
           <h3 className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-4">
             Education
           </h3>
-          <div className="p-6 rounded-xl border border-border bg-background">
-            <div className="flex flex-wrap items-start justify-between gap-2 mb-1">
-              <h4 className="text-base font-semibold text-foreground">
-                {education.institution}
-              </h4>
-              <p className="text-sm text-muted-foreground">{education.period}</p>
-            </div>
-            <p className="text-sm text-zinc-600 dark:text-zinc-300 mb-1">{education.degree}</p>
-            <p className="text-sm text-muted-foreground mb-4">
-              {education.location} &middot; CGPA {education.cgpa}
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {education.coursework.map((course) => (
-                <span
-                  key={course}
-                  className="px-2.5 py-1 text-xs text-zinc-700 dark:text-zinc-300 bg-surface border border-border rounded-full"
-                >
-                  {course}
-                </span>
-              ))}
-            </div>
+          <div className="space-y-4">
+            {education.map((edu) => (
+              <div
+                key={edu.institution}
+                className="p-6 rounded-xl border border-border bg-background"
+              >
+                <div className="flex flex-wrap items-start justify-between gap-2 mb-1">
+                  <h4 className="text-base font-semibold text-foreground">
+                    {edu.institution}
+                  </h4>
+                  <p className="text-sm text-muted-foreground">{edu.period}</p>
+                </div>
+                <p className="text-sm text-zinc-600 dark:text-zinc-300 mb-1">{edu.degree}</p>
+                <p className="text-sm text-muted-foreground mb-4">
+                  {edu.location} &middot; {edu.result}
+                </p>
+
+                {edu.coursework && edu.coursework.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {edu.coursework.map((course) => (
+                      <span
+                        key={course}
+                        className="px-2.5 py-1 text-xs text-zinc-700 dark:text-zinc-300 bg-surface border border-border rounded-full"
+                      >
+                        {course}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {edu.awards && edu.awards.length > 0 && (
+                  <div>
+                    <p className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-2">
+                      Awards
+                    </p>
+                    <ul className="space-y-1.5">
+                      {edu.awards.map((award) => (
+                        <li
+                          key={award}
+                          className="flex gap-2 text-sm text-zinc-600 dark:text-zinc-300"
+                        >
+                          <span className="text-accent mt-0.5">&bull;</span>
+                          <span>{award}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
 

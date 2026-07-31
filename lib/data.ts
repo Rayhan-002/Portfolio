@@ -30,8 +30,9 @@ export interface Education {
   institution: string
   location: string
   period: string
-  cgpa: string
-  coursework: string[]
+  result: string
+  coursework?: string[]
+  awards?: string[]
 }
 
 export interface Publication {
@@ -141,27 +142,44 @@ export const experiences: Experience[] = [
   },
 ]
 
-export const education: Education = {
-  degree: 'Bachelor of Science in Computer Science and Engineering (CSE)',
-  institution: 'Rajshahi University of Engineering & Technology',
-  location: 'Rajshahi, Bangladesh',
-  period: '2019 – 2024',
-  cgpa: '3.11 / 4.00',
-  coursework: [
-    'Applied Statistics & Queuing Theory',
-    'Neural Networks & Fuzzy Systems',
-    'Data Mining',
-    'Artificial Intelligence',
-    'Digital Image Processing',
-    'Database Systems',
-    'Parallel and Distributed Processing',
-    'Data Structures',
-    'Object-Oriented Programming',
-    'Computer Algorithms',
-    'Computer Networks',
-    'Network Security',
-  ],
-}
+export const education: Education[] = [
+  {
+    degree: 'Bachelor of Science in Computer Science and Engineering (CSE)',
+    institution: 'Rajshahi University of Engineering & Technology',
+    location: 'Rajshahi, Bangladesh',
+    period: '2019 – 2024',
+    result: 'CGPA 3.11 / 4.00',
+    coursework: [
+      'Applied Statistics & Queuing Theory',
+      'Neural Networks & Fuzzy Systems',
+      'Data Mining',
+      'Artificial Intelligence',
+      'Digital Image Processing',
+      'Database Systems',
+      'Parallel and Distributed Processing',
+      'Data Structures',
+      'Object-Oriented Programming',
+      'Computer Algorithms',
+      'Computer Networks',
+      'Network Security',
+    ],
+    awards: ['Dutch-Bangla Bank Scholarship', 'RUET Technical Scholarship'],
+  },
+  {
+    degree: 'Higher Secondary Certificate (H.S.C), Science',
+    institution: 'New Govt. Degree College',
+    location: 'Rajshahi, Bangladesh',
+    period: '2016 – 2018',
+    result: 'GPA 5.00 / 5.00',
+  },
+  {
+    degree: 'Secondary School Certificate (S.S.C), Science',
+    institution: 'Shafikpur High School',
+    location: 'Naogaon, Bangladesh',
+    period: '2016',
+    result: 'GPA 5.00 / 5.00',
+  },
+]
 
 export const publication: Publication = {
   title:

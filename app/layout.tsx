@@ -35,10 +35,10 @@ const personJsonLd = {
   description: personal.bio,
   email: personal.email,
   sameAs: [personal.linkedin, personal.github],
-  alumniOf: {
-    "@type": "CollegeOrUniversity",
-    name: education.institution,
-  },
+  alumniOf: education.map((edu) => ({
+    "@type": "EducationalOrganization",
+    name: edu.institution,
+  })),
 }
 
 export default function RootLayout({
