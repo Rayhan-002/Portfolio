@@ -4,7 +4,7 @@ export interface Project {
   subtitle?: string
   description: string
   tech: string[]
-  github: string
+  repos: { label: string; url: string }[]
   live?: string
   featured: boolean
 }
@@ -61,7 +61,11 @@ export const projects: Project[] = [
     description:
       'A production-ready full-stack application featuring JWT authentication, RESTful APIs, Kanban-style task management with drag-and-drop, image upload and polygon annotation, reusable React components, and centralized state management.',
     tech: ['Next.js', 'React', 'TypeScript', 'Django', 'DRF', 'PostgreSQL', 'Tailwind CSS', 'Zustand'],
-    github: 'https://github.com/Rayhan-002',
+    repos: [
+      { label: 'Frontend', url: 'https://github.com/Rayhan-002/tasklens-frontend' },
+      { label: 'Backend', url: 'https://github.com/Rayhan-002/tasklens-backend' },
+    ],
+    live: 'https://tasklens-frontend.vercel.app/login',
     featured: true,
   },
   {
@@ -71,7 +75,7 @@ export const projects: Project[] = [
     description:
       'A lightweight Chrome extension (Manifest V3) for capturing, editing, and annotating screenshots in-browser. Canvas-based editor with freehand drawing, arrows, cropping, and full undo/redo history. Integrated Chrome scripting and clipboard APIs.',
     tech: ['JavaScript', 'Chrome Extension MV3', 'Canvas API'],
-    github: 'https://github.com/Rayhan-002',
+    repos: [{ label: 'Code', url: 'https://github.com/Rayhan-002/snipz' }],
     featured: true,
   },
   {
@@ -81,7 +85,7 @@ export const projects: Project[] = [
     description:
       'Full-stack travel booking platform with RESTful Node.js/Express backend, MongoDB, and Firebase authentication. Users can browse packages, book trips, and manage bookings through a personal dashboard.',
     tech: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'Express', 'MongoDB', 'Firebase'],
-    github: 'https://github.com/Rayhan-002',
+    repos: [{ label: 'Code', url: 'https://github.com/Rayhan-002/Backpackers-Home' }],
     featured: false,
   },
   {
@@ -91,7 +95,7 @@ export const projects: Project[] = [
     description:
       'Implemented KNN, Single & Multi-layer Perceptron, Kohonen SOMs, and Hopfield Networks from scratch. Applied to the Breast Cancer dataset for classification benchmarking.',
     tech: ['Python', 'LaTeX'],
-    github: 'https://github.com/Rayhan-002',
+    repos: [{ label: 'Code', url: 'https://github.com/Rayhan-002' }],
     featured: false,
   },
   {
@@ -100,7 +104,7 @@ export const projects: Project[] = [
     description:
       'Java Swing desktop application automating meal tracking, expense calculation, and billing for a student hostel mess. Backed by MySQL with secure admin authentication and automated monthly billing computation.',
     tech: ['Java', 'Java Swing', 'MySQL'],
-    github: 'https://github.com/Rayhan-002',
+    repos: [{ label: 'Code', url: 'https://github.com/Rayhan-002/Meal-Management' }],
     featured: false,
   },
 ]
