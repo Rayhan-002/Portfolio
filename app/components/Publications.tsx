@@ -13,7 +13,7 @@ export default function Publications() {
           <h2 className="text-3xl font-bold text-foreground">Research</h2>
         </div>
 
-        <div className="max-w-3xl p-8 rounded-xl border border-border hover:border-zinc-300 hover:shadow-sm transition-all duration-150">
+        <div className="max-w-3xl p-8 rounded-xl border border-border hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-sm transition-all duration-150">
           <div className="flex items-center gap-3 mb-4">
             <span className="px-2.5 py-0.5 text-xs font-medium text-accent bg-accent/10 rounded-full">
               {publication.venue}
@@ -25,7 +25,7 @@ export default function Publications() {
             {publication.title}
           </h3>
 
-          <p className="text-sm text-zinc-600 leading-relaxed mb-6">
+          <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed mb-6">
             {publication.summary}
           </p>
 

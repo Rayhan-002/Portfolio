@@ -17,7 +17,7 @@ export default function Projects() {
           {projects.map((project) => (
             <div
               key={project.id}
-              className="flex flex-col p-6 rounded-xl border border-border hover:border-zinc-300 hover:shadow-sm transition-all duration-150"
+              className="flex flex-col p-6 rounded-xl border border-border hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-sm transition-all duration-150"
             >
               <div className="flex items-start justify-between gap-3 mb-1">
                 <h3 className="text-lg font-semibold text-foreground">
@@ -36,7 +36,7 @@ export default function Projects() {
                 </p>
               )}
 
-              <p className="text-sm text-zinc-600 leading-relaxed mb-5 flex-1">
+              <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed mb-5 flex-1">
                 {project.description}
               </p>
 
@@ -44,7 +44,7 @@ export default function Projects() {
                 {project.tech.map((tech) => (
                   <span
                     key={tech}
-                    className="px-2.5 py-1 text-xs text-zinc-700 bg-zinc-50 border border-border rounded-full"
+                    className="px-2.5 py-1 text-xs text-zinc-700 dark:text-zinc-300 bg-surface border border-border rounded-full"
                   >
                     {tech}
                   </span>

@@ -15,7 +15,7 @@ export default function About() {
 
           {/* Bio — 2 / 3 width */}
           <div className="lg:col-span-2 space-y-5">
-            <p className="text-base text-zinc-600 leading-relaxed">
+            <p className="text-base text-zinc-600 dark:text-zinc-300 leading-relaxed">
               I&apos;m a Computer Science &amp; Engineering graduate from{' '}
               <span className="font-medium text-foreground">
                 Rajshahi University of Engineering &amp; Technology (RUET)
@@ -27,14 +27,14 @@ export default function About() {
               — giving me hands-on experience in applied deep learning research
               and academic writing.
             </p>
-            <p className="text-base text-zinc-600 leading-relaxed">
+            <p className="text-base text-zinc-600 dark:text-zinc-300 leading-relaxed">
               On the engineering side, I build full-stack applications — from
               Kanban task managers with image annotation to Chrome extensions
               with Canvas-based editors. I&apos;m drawn to problems that sit at the
               intersection of software systems and machine learning, and I care
               about writing code that is clean, maintainable, and actually ships.
             </p>
-            <p className="text-base text-zinc-600 leading-relaxed">
+            <p className="text-base text-zinc-600 dark:text-zinc-300 leading-relaxed">
               Currently working as an AI data auditor at{' '}
               <span className="font-medium text-foreground">Outlier AI</span>{' '}
               (promoted from Contributor to Auditor), and actively exploring
@@ -61,12 +61,12 @@ export default function About() {
             ].map((item) => (
               <div
                 key={item.label}
-                className="p-4 rounded-xl border border-border bg-zinc-50"
+                className="p-4 rounded-xl border border-border bg-surface"
               >
                 <p className="font-semibold text-foreground text-sm">
                   {item.label}
                 </p>
-                <p className="text-xs text-zinc-500 mt-1 leading-relaxed">
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1 leading-relaxed">
                   {item.sub}
                 </p>
               </div>

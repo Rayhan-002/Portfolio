@@ -1,4 +1,5 @@
 import { personal } from '@/lib/data'
+import ThemeToggle from '@/app/components/ThemeToggle'
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -14,7 +15,7 @@ export default function Navbar() {
   const displayName = personal.name.split(' ').slice(1).join(' ')
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border">
+    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <a
           href="#"
@@ -23,18 +24,21 @@ export default function Navbar() {
           {displayName}
         </a>
 
-        <ul className="hidden md:flex items-center gap-7">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-150"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="flex items-center gap-5">
+          <ul className="hidden md:flex items-center gap-7">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-150"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <ThemeToggle />
+        </div>
       </nav>
     </header>
   )

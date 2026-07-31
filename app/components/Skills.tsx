@@ -9,7 +9,7 @@ const skillGroups = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 bg-zinc-50">
+    <section id="skills" className="py-24 bg-surface">
       <div className="max-w-6xl mx-auto px-6">
 
         {/* Section header */}
@@ -23,14 +23,14 @@ export default function Skills() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {skillGroups.map((group) => (
             <div key={group.title}>
-              <h3 className="text-xs font-semibold text-zinc-400 uppercase tracking-widest mb-4">
+              <h3 className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-4">
                 {group.title}
               </h3>
               <div className="flex flex-wrap gap-2">
                 {group.items.map((skill) => (
                   <span
                     key={skill}
-                    className="px-3 py-1 text-sm text-zinc-700 bg-white border border-border rounded-full hover:border-zinc-300 transition-colors duration-150"
+                    className="px-3 py-1 text-sm text-zinc-700 dark:text-zinc-300 bg-background border border-border rounded-full hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors duration-150"
                   >
                     {skill}
                   </span>

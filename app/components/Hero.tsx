@@ -24,7 +24,7 @@ export default function Hero() {
               {personal.tagline}
             </p>
 
-            <p className="text-base text-zinc-500 leading-relaxed mb-8">
+            <p className="text-base text-zinc-500 dark:text-zinc-400 leading-relaxed mb-8">
               {personal.bio}
             </p>
 
@@ -60,7 +60,7 @@ export default function Hero() {
                 href={personal.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 border border-border text-sm font-medium rounded-lg text-foreground hover:border-zinc-400 hover:bg-zinc-50 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30 focus-visible:ring-offset-2"
+                className="inline-flex items-center gap-2 px-5 py-2.5 border border-border text-sm font-medium rounded-lg text-foreground hover:border-zinc-400 dark:hover:border-zinc-600 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30 focus-visible:ring-offset-2"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +80,7 @@ export default function Hero() {
                 href={personal.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 border border-border text-sm font-medium rounded-lg text-foreground hover:border-zinc-400 hover:bg-zinc-50 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30 focus-visible:ring-offset-2"
+                className="inline-flex items-center gap-2 px-5 py-2.5 border border-border text-sm font-medium rounded-lg text-foreground hover:border-zinc-400 dark:hover:border-zinc-600 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30 focus-visible:ring-offset-2"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +99,7 @@ export default function Hero() {
 
           {/* ── Profile photo ───────────────────────────────────── */}
           <div className="flex-shrink-0">
-            <div className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden border-4 border-zinc-100 shadow-lg">
+            <div className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden border-4 border-zinc-100 dark:border-zinc-800 shadow-lg">
               <Image
                 src={personal.photo}
                 alt={`${personal.name} — profile photo`}
