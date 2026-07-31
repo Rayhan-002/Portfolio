@@ -2,6 +2,8 @@ import type { Metadata } from "next"
 import Script from "next/script"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
+import { personal, education } from "@/lib/data"
+import { siteUrl } from "@/lib/site"
 import "./globals.css"
 
 // Runs before hydration so the correct theme class is set before first paint —
@@ -17,12 +19,26 @@ const themeInitScript = `
 `
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"
-  ),
+  metadataBase: new URL(siteUrl),
   title: "Md Rayhan Ali \u2013 Full-Stack Developer & ML Researcher",
   description:
     "Portfolio of Md Rayhan Ali. CSE graduate from RUET with a published research paper, full-stack web development expertise, and machine learning research background.",
+}
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: personal.name,
+  url: siteUrl,
+  image: `${siteUrl}${personal.photo}`,
+  jobTitle: personal.tagline,
+  description: personal.bio,
+  email: personal.email,
+  sameAs: [personal.linkedin, personal.github],
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: education.institution,
+  },
 }
 
 export default function RootLayout({
@@ -41,6 +57,12 @@ export default function RootLayout({
           id="theme-init"
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: themeInitScript }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personJsonLd).replace(/</g, "\\u003c"),
+          }}
         />
         {children}
       </body>
