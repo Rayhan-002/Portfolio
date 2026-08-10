@@ -10,7 +10,7 @@ export default function Publications() {
           <p className="text-sm font-medium text-accent mb-2 tracking-wide">
             Published work
           </p>
-          <h2 className="text-3xl font-bold text-foreground">Research</h2>
+          <h2 className="font-display text-3xl font-medium text-foreground">Research</h2>
         </div>
 
         <div className="max-w-3xl p-8 rounded-xl border border-border hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-sm transition-all duration-150">

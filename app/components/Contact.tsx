@@ -7,7 +7,7 @@ export default function Contact() {
         <p className="text-sm font-medium text-accent mb-2 tracking-wide">
           Get in touch
         </p>
-        <h2 className="text-3xl font-bold text-foreground mb-4">Contact</h2>
+        <h2 className="font-display text-3xl font-medium text-foreground mb-4">Contact</h2>
         <p className="text-base text-zinc-600 dark:text-zinc-300 max-w-xl mx-auto mb-10 leading-relaxed">
           I&apos;m open to full-stack engineering roles, ML/research
           collaborations, and interesting conversations. Feel free to reach

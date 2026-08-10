@@ -196,7 +196,7 @@ export const personal: Personal = {
   tagline: 'Full-Stack Developer & ML Researcher',
   bio: 'CSE graduate from RUET with a published research paper in hyperspectral image classification. I build production-ready full-stack applications and explore the frontiers of machine learning — combining engineering precision with a research mindset.',
   email: 'sm.rayhanali.bd@gmail.com',
-  linkedin: 'https://linkedin.com/in/rayhan-ali-391215180',
+  linkedin: 'https://www.linkedin.com/in/md-rayhan-ali-391215180/',
   github: 'https://github.com/Rayhan-002',
   resume: '/Rayhan_cv.pdf',
   photo: '/Rayhan_image.jpg',

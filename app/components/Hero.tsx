@@ -16,11 +16,11 @@ export default function Hero() {
               Hi, I&apos;m
             </p>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-4">
+            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-medium text-foreground leading-[1.05] tracking-tight mb-4">
               {personal.name}
             </h1>
 
-            <p className="text-lg sm:text-xl text-muted-foreground font-medium mb-6">
+            <p className="font-display italic text-xl sm:text-2xl text-muted-foreground mb-6">
               {personal.tagline}
             </p>
 
@@ -99,15 +99,17 @@ export default function Hero() {
 
           {/* ── Profile photo ───────────────────────────────────── */}
           <div className="flex-shrink-0">
-            <div className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden border-4 border-zinc-100 dark:border-zinc-800 shadow-lg">
-              <Image
-                src={personal.photo}
-                alt={`${personal.name} — profile photo`}
-                width={288}
-                height={288}
-                className="w-full h-full object-cover"
-                priority
-              />
+            <div className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full ring-1 ring-accent/15 ring-offset-8 ring-offset-background shadow-[0_20px_45px_-15px_rgba(37,99,235,0.35)] dark:shadow-[0_20px_45px_-15px_rgba(0,0,0,0.6)]">
+              <div className="w-full h-full rounded-full overflow-hidden border border-border">
+                <Image
+                  src={personal.photo}
+                  alt={`${personal.name} — profile photo`}
+                  width={288}
+                  height={288}
+                  className="w-full h-full object-cover"
+                  priority
+                />
+              </div>
             </div>
           </div>
 

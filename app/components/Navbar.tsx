@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { personal } from '@/lib/data'
 import ThemeToggle from '@/app/components/ThemeToggle'
 
@@ -17,6 +17,27 @@ export default function Navbar() {
   // "Md Rayhan Ali" → "Rayhan Ali" (drop honorific prefix for compact nav logo)
   const displayName = personal.name.split(' ').slice(1).join(' ')
   const [menuOpen, setMenuOpen] = useState(false)
+  const [activeHref, setActiveHref] = useState('')
+
+  useEffect(() => {
+    const sections = navLinks
+      .map((link) => document.querySelector(link.href))
+      .filter((el): el is Element => el !== null)
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveHref(`#${entry.target.id}`)
+          }
+        })
+      },
+      { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
+    )
+
+    sections.forEach((section) => observer.observe(section))
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
@@ -34,7 +55,11 @@ export default function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-150"
+                  className={`text-sm pb-1 border-b-2 transition-colors duration-150 ${
+                    activeHref === link.href
+                      ? 'text-foreground font-medium border-accent'
+                      : 'text-muted-foreground hover:text-foreground border-transparent'
+                  }`}
                 >
                   {link.label}
                 </a>

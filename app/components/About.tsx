@@ -8,7 +8,7 @@ export default function About() {
           <p className="text-sm font-medium text-accent mb-2 tracking-wide">
             Get to know me
           </p>
-          <h2 className="text-3xl font-bold text-foreground">About Me</h2>
+          <h2 className="font-display text-3xl font-medium text-foreground">About Me</h2>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-12 items-start">

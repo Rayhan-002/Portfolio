@@ -10,7 +10,7 @@ export default function Experience() {
           <p className="text-sm font-medium text-accent mb-2 tracking-wide">
             Where I&apos;ve worked
           </p>
-          <h2 className="text-3xl font-bold text-foreground">Experience</h2>
+          <h2 className="font-display text-3xl font-medium text-foreground">Experience</h2>
         </div>
 
         <div className="space-y-8 mb-16">

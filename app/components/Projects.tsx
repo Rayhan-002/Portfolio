@@ -10,7 +10,7 @@ export default function Projects() {
           <p className="text-sm font-medium text-accent mb-2 tracking-wide">
             What I&apos;ve built
           </p>
-          <h2 className="text-3xl font-bold text-foreground">Projects</h2>
+          <h2 className="font-display text-3xl font-medium text-foreground">Projects</h2>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-6">
