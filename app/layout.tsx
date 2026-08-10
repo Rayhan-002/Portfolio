@@ -5,6 +5,8 @@ import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
 import { personal, education } from "@/lib/data"
 import { siteUrl } from "@/lib/site"
+import Navbar from "@/app/components/Navbar"
+import Footer from "@/app/components/Footer"
 import "./globals.css"
 
 // Display serif for the name and section headings only — Geist Sans stays
@@ -75,7 +77,9 @@ export default function RootLayout({
             __html: JSON.stringify(personJsonLd).replace(/</g, "\\u003c"),
           }}
         />
-        {children}
+        <Navbar />
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   )

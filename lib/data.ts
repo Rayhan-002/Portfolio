@@ -1,3 +1,22 @@
+import { tasklensCaseStudy } from './case-studies/tasklens'
+
+export interface CaseStudyStat {
+  label: string
+  value: string
+}
+
+export interface CaseStudySection {
+  heading: string
+  body: string[]
+  bullets?: string[]
+}
+
+export interface CaseStudy {
+  tagline?: string
+  stats?: CaseStudyStat[]
+  sections: CaseStudySection[]
+}
+
 export interface Project {
   id: string
   title: string
@@ -7,6 +26,7 @@ export interface Project {
   repos: { label: string; url: string }[]
   live?: string
   featured: boolean
+  caseStudy?: CaseStudy
 }
 
 export interface SkillGroup {
@@ -68,6 +88,7 @@ export const projects: Project[] = [
     ],
     live: 'https://tasklens-frontend.vercel.app/login',
     featured: true,
+    caseStudy: tasklensCaseStudy,
   },
   {
     id: 'snipz',
@@ -109,6 +130,12 @@ export const projects: Project[] = [
     featured: false,
   },
 ]
+
+// Single shared filter reused by generateStaticParams, the case-study cross-nav
+// panel, and sitemap.ts — keeps "has a case study" from drifting between the three.
+export const projectsWithCaseStudy = projects.filter(
+  (project): project is Project & { caseStudy: CaseStudy } => project.caseStudy !== undefined
+)
 
 export const skills: SkillGroup = {
   languages: ['Python', 'C', 'C++', 'Java', 'JavaScript', 'TypeScript', 'Matlab'],

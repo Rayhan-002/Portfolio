@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Md Rayhan Ali — Portfolio
+
+Personal portfolio site for Md Rayhan Ali (Full-Stack Developer & ML Researcher), built with the Next.js App Router. Single-page, content driven from one data file, deployed on Vercel.
+
+**Live:** https://portfolio-smray-dev.vercel.app
+
+## Tech Stack
+
+- [Next.js 16](https://nextjs.org) (App Router, Turbopack)
+- React 19 + TypeScript
+- Tailwind CSS v4 (CSS-first config via `@theme inline`)
+- [Geist Sans/Mono](https://vercel.com/font) (UI/body) + [Newsreader](https://fonts.google.com/specimen/Newsreader) (serif display, via `next/font/google`)
+
+## Features
+
+- **Sections:** Hero, About, Skills, Projects, Research/Publications, Experience & Education, Contact — all rendered from [lib/data.ts](lib/data.ts)
+- **Dark mode:** manual light/dark toggle (class-based, persisted to `localStorage`), no flash-of-wrong-theme on load
+- **Navigation:** sticky navbar with scroll-spy active-section indicator, mobile hamburger menu
+- **Motion:** scroll-reveal on each section via `IntersectionObserver`, respects `prefers-reduced-motion`
+- **SEO:** per-page metadata, dynamic Open Graph image and favicon (`next/og`), `sitemap.xml` / `robots.txt`, JSON-LD `Person` schema
+- **Projects:** data model supports multiple repo links per project (e.g. split frontend/backend repos) plus an optional live-demo link
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run lint    # eslint
+npm run build   # production build (Turbopack)
+npm run start   # serve the production build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+> `npm run dev` runs with `--webpack` — see the comment in [next.config.ts](next.config.ts) (it works around an OneDrive/Windows file-watching issue). Production builds use Turbopack, Next's default.
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/
+  components/     # one component per section (Navbar, Hero, About, Skills, ...)
+  layout.tsx       # fonts, metadata, theme-init script, JSON-LD
+  page.tsx         # composes the section components in order
+  globals.css       # design tokens (light/dark), Tailwind v4 theme
+  icon.tsx, opengraph-image.tsx   # generated via next/og
+  sitemap.ts, robots.ts
+lib/
+  data.ts          # single source of truth for all site content
+  site.ts          # resolves the canonical site URL (prod vs. preview vs. local)
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Content
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+All personal/CV content (bio, skills, projects, experience, education, publication) lives in [lib/data.ts](lib/data.ts). Update that file to change site content — no component edits needed for content changes.
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deployed on Vercel from the `main` branch. [lib/site.ts](lib/site.ts) resolves the canonical URL: `VERCEL_PROJECT_PRODUCTION_URL` in production, `VERCEL_URL` on preview deployments, `localhost:3000` otherwise — this keeps `sitemap.xml`/`robots.txt`/OG metadata pointing at the right domain regardless of environment.

@@ -1,16 +1,18 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { personal } from '@/lib/data'
 import ThemeToggle from '@/app/components/ThemeToggle'
 
 const navLinks = [
-  { href: '#about', label: 'About' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#publications', label: 'Research' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/#about', label: 'About' },
+  { href: '/#skills', label: 'Skills' },
+  { href: '/#projects', label: 'Projects' },
+  { href: '/#publications', label: 'Research' },
+  { href: '/#experience', label: 'Experience' },
+  { href: '/#contact', label: 'Contact' },
 ]
 
 export default function Navbar() {
@@ -18,17 +20,26 @@ export default function Navbar() {
   const displayName = personal.name.split(' ').slice(1).join(' ')
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeHref, setActiveHref] = useState('')
+  const pathname = usePathname()
+  const onHomepage = pathname === '/'
 
+  // Navbar lives in the root layout, so it persists (doesn't remount) across
+  // client-side navigations — this must re-run per route so the observer
+  // re-attaches on arriving back at "/" (it wouldn't otherwise fire again).
+  // activeHref itself is never reset; onHomepage below just stops it from
+  // being consulted when it's stale (i.e. left over from before navigating away).
   useEffect(() => {
+    if (!onHomepage) return
+
     const sections = navLinks
-      .map((link) => document.querySelector(link.href))
+      .map((link) => document.querySelector(link.href.slice(1)))
       .filter((el): el is Element => el !== null)
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveHref(`#${entry.target.id}`)
+            setActiveHref(`/#${entry.target.id}`)
           }
         })
       },
@@ -37,32 +48,32 @@ export default function Navbar() {
 
     sections.forEach((section) => observer.observe(section))
     return () => observer.disconnect()
-  }, [])
+  }, [onHomepage])
 
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a
-          href="#"
+        <Link
+          href="/"
           className="font-semibold text-foreground hover:text-accent transition-colors duration-150 text-sm"
         >
           {displayName}
-        </a>
+        </Link>
 
         <div className="flex items-center gap-3">
           <ul className="hidden md:flex items-center gap-7">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a
+                <Link
                   href={link.href}
                   className={`text-sm pb-1 border-b-2 transition-colors duration-150 ${
-                    activeHref === link.href
+                    onHomepage && activeHref === link.href
                       ? 'text-foreground font-medium border-accent'
                       : 'text-muted-foreground hover:text-foreground border-transparent'
                   }`}
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -116,13 +127,13 @@ export default function Navbar() {
           <ul className="max-w-6xl mx-auto px-6 py-2 flex flex-col">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a
+                <Link
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
                   className="block py-2.5 text-sm text-muted-foreground hover:text-foreground transition-colors duration-150"
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
