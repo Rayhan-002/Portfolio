@@ -1,4 +1,6 @@
 import { tasklensCaseStudy } from './case-studies/tasklens'
+import { snipzCaseStudy } from './case-studies/snipz'
+import { mealManagementCaseStudy } from './case-studies/meal-management'
 
 export interface CaseStudyStat {
   label: string
@@ -99,6 +101,7 @@ export const projects: Project[] = [
     tech: ['JavaScript', 'Chrome Extension MV3', 'Canvas API'],
     repos: [{ label: 'Code', url: 'https://github.com/Rayhan-002/snipz' }],
     featured: true,
+    caseStudy: snipzCaseStudy,
   },
   {
     id: 'backpackers-home',
@@ -128,6 +131,7 @@ export const projects: Project[] = [
     tech: ['Java', 'Java Swing', 'MySQL'],
     repos: [{ label: 'Code', url: 'https://github.com/Rayhan-002/Meal-Management' }],
     featured: false,
+    caseStudy: mealManagementCaseStudy,
   },
 ]
 

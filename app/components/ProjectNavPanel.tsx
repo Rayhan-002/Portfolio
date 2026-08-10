@@ -28,15 +28,15 @@ export default function ProjectNavPanel({
     <>
       {sections.length > 0 && (
         <div className="mb-8">
-          <p className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-3">
+          <p className="text-xs font-semibold text-zinc-500 uppercase tracking-widest mb-3">
             On this page
           </p>
-          <ul className="space-y-2">
+          <ul className="space-y-1">
             {sections.map((section) => (
               <li key={section.id}>
                 <a
                   href={`#${section.id}`}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-150"
+                  className="block px-2 py-1.5 -mx-2 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-surface transition-colors duration-150"
                 >
                   {section.heading}
                 </a>
@@ -47,16 +47,16 @@ export default function ProjectNavPanel({
       )}
 
       <nav aria-label="Other projects">
-        <p className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-3">
+        <p className="text-xs font-semibold text-zinc-500 uppercase tracking-widest mb-3">
           Projects
         </p>
-        <ul className="space-y-2">
+        <ul className="space-y-1">
           {projects.map((project) =>
             project.id === currentId ? (
               <li key={project.id}>
                 <span
                   aria-current="page"
-                  className="block pl-3 -ml-px border-l-2 border-accent text-sm font-medium text-foreground"
+                  className="block px-2 py-1.5 -mx-2 rounded-md text-sm font-medium text-accent bg-accent/10"
                 >
                   {project.title}
                 </span>
@@ -65,7 +65,7 @@ export default function ProjectNavPanel({
               <li key={project.id}>
                 <Link
                   href={`/projects/${project.id}`}
-                  className="block pl-3 -ml-px border-l-2 border-transparent text-sm text-muted-foreground hover:text-foreground hover:border-border transition-colors duration-150"
+                  className="block px-2 py-1.5 -mx-2 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-surface transition-colors duration-150"
                 >
                   {project.title}
                 </Link>
