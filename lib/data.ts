@@ -1,6 +1,7 @@
 import { tasklensCaseStudy } from './case-studies/tasklens'
 import { snipzCaseStudy } from './case-studies/snipz'
 import { mealManagementCaseStudy } from './case-studies/meal-management'
+import { hyperspectralCnnCaseStudy } from './case-studies/hyperspectral-cnn'
 
 export interface CaseStudyStat {
   label: string
@@ -58,11 +59,14 @@ export interface Education {
 }
 
 export interface Publication {
+  id: string
   title: string
   venue: string
   year: number
   doi: string
   summary: string
+  coAuthors?: string[]
+  caseStudy?: CaseStudy
 }
 
 export interface Personal {
@@ -212,15 +216,26 @@ export const education: Education[] = [
   },
 ]
 
-export const publication: Publication = {
-  title:
-    'A Hybrid 3D-2D Convolutional Neural Network with Spatial Attention for Enhanced Spectral-Spatial Classification of Hyperspectral Images',
-  venue: 'ICCIT 2024',
-  year: 2024,
-  doi: '10.1109/ICCIT64611.2024.11022565',
-  summary:
-    'Designed a hybrid 3D-2D CNN architecture with a spatial attention mechanism for hyperspectral image (HSI) classification, using Z-score normalization and Incremental PCA for efficient dimensionality reduction and enhanced spectral-spatial feature extraction.',
-}
+export const publications: Publication[] = [
+  {
+    id: 'hyperspectral-cnn',
+    title:
+      'A Hybrid 3D-2D Convolutional Neural Network with Spatial Attention for Enhanced Spectral-Spatial Classification of Hyperspectral Images',
+    venue: 'ICCIT 2024',
+    year: 2024,
+    doi: '10.1109/ICCIT64611.2024.11022565',
+    summary:
+      'Designed a hybrid 3D-2D CNN architecture with a spatial attention mechanism for hyperspectral image (HSI) classification, using Z-score normalization and Incremental PCA for efficient dimensionality reduction and enhanced spectral-spatial feature extraction.',
+    coAuthors: ['Esmay Bhuiyan', 'Sadia Zaman Mishu', 'Md. Ali Hossain'],
+    caseStudy: hyperspectralCnnCaseStudy,
+  },
+]
+
+// Mirrors projectsWithCaseStudy — same reasoning: one shared filter reused by
+// generateStaticParams and sitemap.ts so "has a case study" can't drift.
+export const publicationsWithCaseStudy = publications.filter(
+  (pub): pub is Publication & { caseStudy: CaseStudy } => pub.caseStudy !== undefined
+)
 
 export const personal: Personal = {
   name: 'Md Rayhan Ali',

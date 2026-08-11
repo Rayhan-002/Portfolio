@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { siteUrl } from '@/lib/site'
-import { projectsWithCaseStudy } from '@/lib/data'
+import { projectsWithCaseStudy, publicationsWithCaseStudy } from '@/lib/data'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -12,6 +12,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...projectsWithCaseStudy.map((project) => ({
       url: `${siteUrl}/projects/${project.id}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
+    ...publicationsWithCaseStudy.map((pub) => ({
+      url: `${siteUrl}/research/${pub.id}`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
