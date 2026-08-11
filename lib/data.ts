@@ -2,6 +2,7 @@ import { tasklensCaseStudy } from './case-studies/tasklens'
 import { snipzCaseStudy } from './case-studies/snipz'
 import { mealManagementCaseStudy } from './case-studies/meal-management'
 import { hyperspectralCnnCaseStudy } from './case-studies/hyperspectral-cnn'
+import { companyPolicyAssistantCaseStudy } from './case-studies/company-policy-assistant'
 
 export interface CaseStudyStat {
   label: string
@@ -82,6 +83,17 @@ export interface Personal {
 
 export const projects: Project[] = [
   {
+    id: 'company-policy-assistant',
+    title: 'Company Policy Assistant',
+    subtitle: 'Eval-Driven RAG Knowledge Assistant',
+    description:
+      'A production-oriented retrieval-augmented generation assistant for company policy questions, grounded strictly in an internal knowledge base with citations. Built around hybrid dense+BM25 retrieval, cross-encoder reranking, and a 39-question benchmark that measures retrieval and generation quality at every pipeline stage.',
+    tech: ['Python', 'FastAPI', 'Next.js', 'FAISS', 'BM25', 'Sentence-Transformers', 'Cross-Encoder Reranking', 'Tailwind CSS'],
+    repos: [{ label: 'Code', url: 'https://github.com/Rayhan-002/company-policy-assistant' }],
+    featured: true,
+    caseStudy: companyPolicyAssistantCaseStudy,
+  },
+  {
     id: 'tasklens',
     title: 'TaskLens',
     subtitle: 'Full-Stack Task Management & Image Annotation Platform',
@@ -137,6 +149,7 @@ export const projects: Project[] = [
     featured: false,
     caseStudy: mealManagementCaseStudy,
   },
+  
 ]
 
 // Single shared filter reused by generateStaticParams, the case-study cross-nav
